@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0F1535" />
+    <meta
+      name="description"
+      content="Radio Pastor 102.1 FM: música, palabra y esperanza en vivo las 24 horas."
+    />
+    <title>Radio Pastor 102.1 FM | En vivo</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+
+    <!--
+  ============================================================
+  LISTA DE ELEMENTOS A REEMPLAZAR (busca "REEMPLAZAR:" en el código)
+  ============================================================
+  1. LOGO ........... archivo img/logo.png (logo real, transparente y en versión clara para fondos azules; img/logo-color.png es la versión con colores originales)
+  2. FOTOS .......... fundador, locutores (4) y galería (6): enlaces Picsum
+  3. URL DEL STREAM . ya configurada en data-stream del <audio id="audio"> (cámbiala solo si el servidor cambia)
+  4. TELÉFONOS ...... sección Contacto (enlaces tel:)  y WhatsApp
+  5. CORREO ......... sección Contacto
+  6. CUENTAS BANCARIAS sección Contacto (datos de ejemplo)
+  7. REDES SOCIALES . enlaces en Contacto y pie de página (href="#")
+  8. TEXTOS .......... historia, nombre del fundador, programas y horarios
+  ============================================================
+  -->
+
+    <!-- Bootstrap 5 e iconos (CDN) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Tipografías: Fraunces (títulos) + DM Sans (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <!-- ===== ENCABEZADO + NAVEGACIÓN FIJA ===== -->
+    <header>
+      <nav
+        class="navbar navbar-expand-lg fixed-top rp-nav"
+        aria-label="Navegación principal"
+      >
+        <div class="container">
+          <a
+            class="navbar-brand d-flex align-items-center gap-2"
+            href="#inicio"
+            aria-label="Radio Pastor 102.1 FM, ir al inicio"
+          >
+            <!-- LOGO: solo la imagen (img/logo.png). Sin fondo ni recuadro; reemplaza el archivo para cambiarla -->
+            <img
+              class="rp-logo"
+              src="img/logo.png"
+              width="760"
+              height="420"
+              alt="Logo de Radio Pastor, La Voz del Amado"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+            aria-controls="menu"
+            aria-expanded="false"
+            aria-label="Abrir menú"
+          >
+            <i class="bi bi-list text-white fs-2"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#historia">Historia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#locutores">Locutores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#galeria">Galería</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contacto">Contacto</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-rp btn-live ms-lg-2" href="#inicio"
+                  ><i class="bi bi-broadcast" aria-hidden="true"></i>
+                  Escúchanos</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ===== HERO CON REPRODUCTOR (lo primero que ve el visitante) ===== -->
+      <section id="inicio" class="hero" aria-labelledby="hero-titulo">
+        <div class="container hero-inner">
+          <div class="row align-items-center g-4 g-lg-5">
+            <div class="col-lg-6">
+              <p class="hero-kicker hero-in" style="--d: 0s">
+                <i class="bi bi-broadcast" aria-hidden="true"></i> Palabra,
+                música y esperanza
+              </p>
+              <h1
+                id="hero-titulo"
+                class="hero-freq hero-in"
+                style="--d: 0.12s"
+                aria-label="Radio Pastor 102.1 FM"
+              >
+                <span>102.1</span><small>FM</small>
+              </h1>
+              <!-- Dial de sintonía: la aguja vibra solo cuando la radio está sonando -->
+              <div class="dial hero-in" style="--d: 0.24s" aria-hidden="true">
+                <i class="needle"></i>
+              </div>
+              <p class="hero-lead hero-in" style="--d: 0.36s">
+                Radio Pastor, la voz que te acompaña desde el amanecer.
+              </p>
+              <a
+                href="#historia"
+                class="btn btn-ghost btn-lg d-none d-lg-inline-block hero-in"
+                style="--d: 0.48s"
+                >Nuestra historia</a
+              >
+            </div>
+
+            <div class="col-lg-6 hero-in" style="--d: 0.3s" id="en-vivo">
+              <div
+                class="player glass"
+                role="region"
+                aria-label="Reproductor de Radio Pastor 102.1 FM"
+              >
+                <!-- URL del stream de la radio (cámbiala en data-stream si el servidor cambia) -->
+                <audio
+                  id="audio"
+                  preload="none"
+                  playsinline
+                  webkit-playsinline
+                  data-stream="https://radio.elsalvadordigital.net/proxy/otonielelsalvador1/;"
+                ></audio>
+
+                <button
+                  id="btnPlay"
+                  class="btn-play"
+                  type="button"
+                  aria-label="Reproducir radio en vivo"
+                  aria-pressed="false"
+                >
+                  <i class="bi bi-play-fill" aria-hidden="true"></i>
+                </button>
+
+                <div class="player-info">
+                  <span class="live-badge" id="liveBadge"
+                    ><i aria-hidden="true"></i> EN VIVO</span
+                  >
+                  <p class="player-title mb-0">Radio Pastor 102.1 FM</p>
+                  <p
+                    class="player-status mb-0"
+                    id="status"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    Toca play para sintonizar
+                  </p>
+                </div>
+
+                <!-- Ecualizador animado (decorativo) -->
+                <div class="eq" id="eq" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i><i></i><i></i>
+                </div>
+
+                <div class="vol" id="volWrap">
+                  <button
+                    id="btnMute"
+                    class="btn-icon"
+                    type="button"
+                    aria-label="Silenciar"
+                  >
+                    <i class="bi bi-volume-up-fill" aria-hidden="true"></i>
+                  </button>
+                  <input
+                    id="vol"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="80"
+                    aria-label="Control de volumen"
+                  />
+                </div>
+                <p class="ios-note" id="iosNote" hidden>
+                  En iPhone y iPad, el volumen se ajusta con los botones del
+                  dispositivo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-waves" aria-hidden="true"><i></i><i></i><i></i></div>
+      </section>
+
+      <!-- Cinta de programas en movimiento (REEMPLAZAR: nombres de tus programas) -->
+      <div
+        class="ticker"
+        aria-label="Nuestros programas: Música que Edifica, Palabra de Vida, Amanecer con Esperanza, Familia en Casa, Noche de Paz"
+      >
+        <div class="ticker-track" aria-hidden="true">
+          <div>
+            <span
+              ><i class="bi bi-music-note-beamed"></i> Música que Edifica</span
+            ><span><i class="bi bi-book-fill"></i> Palabra de Vida</span
+            ><span
+              ><i class="bi bi-sunrise-fill"></i> Amanecer con Esperanza</span
+            ><span><i class="bi bi-house-heart-fill"></i> Familia en Casa</span
+            ><span><i class="bi bi-moon-stars-fill"></i> Noche de Paz</span>
+          </div>
+          <div>
+            <span
+              ><i class="bi bi-music-note-beamed"></i> Música que Edifica</span
+            ><span><i class="bi bi-book-fill"></i> Palabra de Vida</span
+            ><span
+              ><i class="bi bi-sunrise-fill"></i> Amanecer con Esperanza</span
+            ><span><i class="bi bi-house-heart-fill"></i> Familia en Casa</span
+            ><span><i class="bi bi-moon-stars-fill"></i> Noche de Paz</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== HISTORIA Y FUNDADOR (justo después del hero) ===== -->
+      <section
+        id="historia"
+        class="section section-light"
+        aria-labelledby="historia-titulo"
+      >
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-md-5">
+              <div class="founder-wrap reveal">
+                <span class="halo" aria-hidden="true"></span>
+                <figure class="founder">
+                  <!-- REEMPLAZAR: foto del fundador (recomendado 800x1000 px) -->
+                  <img
+                    src="img/fundador.jpg"
+                    width="800"
+                    height="1000"
+                    loading="lazy"
+                    alt="Retrato del fundador de Radio Pastor (foto de ejemplo)"
+                  />
+                  <figcaption>
+                    <strong>Otoniel F.</strong><span>Fundador</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="col-md-7 reveal" data-anim="right">
+              <h2 id="historia-titulo" class="display-title">
+                Una señal pequeña que llegó lejos
+              </h2>
+              <!-- REEMPLAZAR: texto de la historia real -->
+              <p>
+                Radio Pastor 102.1 FM nació con el propósito de compartir un
+                mensaje de fe, esperanza y compañía a través de la radio. Desde
+                sus inicios, ha buscado ser un espacio donde las personas puedan
+                encontrar música cristiana, reflexiones bíblicas, oración y
+                mensajes que fortalezcan su vida espiritual.
+              </p>
+              <p>
+                Nuestra programación reúne diferentes espacios y programas de
+                contenido evangélico, con la participación de distintas voces y
+                ministerios que comparten un mismo propósito: llevar un mensaje
+                positivo a cada hogar, sin importar dónde se encuentre quien nos
+                escucha.
+              </p>
+              <p>
+                Hoy seguimos trabajando para ofrecer una programación variada
+                durante todo el día, siendo una compañía para quienes buscan
+                escuchar una palabra de aliento, música cristiana o simplemente
+                sentirse más cerca de Dios.
+              </p>
+              <ul class="facts list-unstyled">
+                <li><strong>24 h</strong> Al Aire</li>
+                <li><strong>FM</strong> Señal Radial</li>
+                <li><strong>Fe </strong> Nuestro Mensaje</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== LOCUTORES ===== -->
+      <section
+        id="locutores"
+        class="section section-light"
+        aria-labelledby="loc-titulo"
+      >
+        <div class="container">
+          <h2 id="loc-titulo" class="display-title text-center reveal">
+            Voces con Propósito
+          </h2>
+          <p class="text-center lead-sm reveal">
+            Diferentes programas, mensajes y espacios que comparten fe, amor y
+            esperanza a través de nuestra señal.
+          </p>
+          <div class="row g-4">
+            <div class="col-12 col-sm-6 col-lg-3 reveal" data-anim="card">
+              <article class="loc">
+                <!-- REEMPLAZAR: foto del locutor 1 -->
+                <img
+                  src="img/locutor-1.jpeg"
+                  width="500"
+                  height="600"
+                  loading="lazy"
+                  alt="Foto de ejemplo de Lisseth Meléndez"
+                />
+                <div class="loc-body">
+                  <h3>Lisseth Meléndez</h3>
+                  <p class="role">Director de programación</p>
+                  <p class="show">
+                    <i class="bi bi-mic-fill"></i> Amanecer con Esperanza · 5–9
+                    am
+                  </p>
+                </div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 reveal" data-anim="card">
+              <article class="loc">
+                <!-- REEMPLAZAR: foto del locutor 2 -->
+                <img
+                  src="img/locutor-2.jpeg"
+                  width="500"
+                  height="600"
+                  loading="lazy"
+                  alt="Foto de ejemplo de Josué Medina"
+                />
+                <div class="loc-body">
+                  <h3>Josué Medina</h3>
+                  <p class="role">Locutor principal</p>
+                  <p class="show">
+                    <i class="bi bi-mic-fill"></i> Música que Edifica · 9–1 pm
+                  </p>
+                </div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 reveal" data-anim="card">
+              <article class="loc">
+                <!-- REEMPLAZAR: foto del locutor 3 -->
+                <img
+                  src="img/locutor-3.jpeg"
+                  width="500"
+                  height="600"
+                  loading="lazy"
+                  alt="Foto de ejemplo de Lucía Hernández"
+                />
+                <div class="loc-body">
+                  <h3>Lucía Hernández</h3>
+                  <p class="role">Conductora y consejera</p>
+                  <p class="show">
+                    <i class="bi bi-mic-fill"></i> Familia en Casa · 2–5 pm
+                  </p>
+                </div>
+              </article>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 reveal" data-anim="card">
+              <article class="loc">
+                <!-- REEMPLAZAR: foto del locutor 4 -->
+                <img
+                  src="img/locutor-4.jpeg"
+                  width="500"
+                  height="600"
+                  loading="lazy"
+                  alt="Foto de ejemplo de Samuel Ortiz"
+                />
+                <div class="loc-body">
+                  <h3>Samuel Ortiz</h3>
+                  <p class="role">Locutor nocturno</p>
+                  <p class="show">
+                    <i class="bi bi-mic-fill"></i> Noche de Paz · 8–11 pm
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== GALERÍA DE EQUIPOS ===== -->
+      <section
+        id="galeria"
+        class="section section-dark"
+        aria-labelledby="gal-titulo"
+      >
+        <div class="container">
+          <h2 id="gal-titulo" class="display-title text-center reveal">
+            Detrás del micrófono
+          </h2>
+          <div class="gallery">
+            <!-- REEMPLAZAR: cada foto de la galería (el atributo data-full es la versión grande del lightbox) -->
+            <button
+              type="button"
+              class="g-item g-wide reveal"
+              data-anim="zoom"
+              data-full="img/galeria-1.jpg"
+              data-caption="Cabina principal"
+            >
+              <img
+                src="img/galeria-1.jpg"
+                width="700"
+                height="450"
+                loading="lazy"
+                alt="Cabina principal de la radio (foto de ejemplo)"
+              /><span>Cabina Principal</span>
+            </button>
+            <button
+              type="button"
+              class="g-item reveal"
+              data-anim="zoom"
+              data-full="img/galeria-2.jpg"
+              data-caption="Transmisor FM"
+            >
+              <img
+                src="img/galeria-2.jpg"
+                width="500"
+                height="500"
+                loading="lazy"
+                alt="Transmisor FM (foto de ejemplo)"
+              /><span>Transmisor FM</span>
+            </button>
+            <button
+              type="button"
+              class="g-item reveal"
+              data-anim="zoom"
+              data-full="img/galeria-3.jpg"
+              data-caption="Estudio de grabación"
+            >
+              <img
+                src="img/galeria-3.jpg"
+                width="500"
+                height="500"
+                loading="lazy"
+                alt="Estudio de grabación (foto de ejemplo)"
+              /><span>Estudio de Grabación</span>
+            </button>
+            <button
+              type="button"
+              class="g-item reveal"
+              data-anim="zoom"
+              data-full="img/galeria-4.jpg"
+              data-caption="Consola de mezcla"
+            >
+              <img
+                src="img/galeria-4.jpg"
+                width="500"
+                height="500"
+                loading="lazy"
+                alt="Consola de mezcla (foto de ejemplo)"
+              /><span>Consola de Mezcla</span>
+            </button>
+            <button
+              type="button"
+              class="g-item reveal"
+              data-anim="zoom"
+              data-full="img/galeria-5.jpg"
+              data-caption="Torre y antena"
+            >
+              <img
+                src="img/galeria-5.jpg"
+                width="500"
+                height="500"
+                loading="lazy"
+                alt="Torre y antena (foto de ejemplo)"
+              /><span>Torre y Antena</span>
+            </button>
+            <button
+              type="button"
+              class="g-item g-wide reveal"
+              data-anim="zoom"
+              data-full="img/galeria-6.jpg"
+              data-caption="Micrófonos y audífonos"
+            >
+              <img
+                src="img/galeria-6.jpg"
+                width="700"
+                height="450"
+                loading="lazy"
+                alt="Micrófonos y audífonos (foto de ejemplo)"
+              /><span>Micrófonos y Audífonos</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACTO Y CUENTAS BANCARIAS ===== -->
+      <section
+        id="contacto"
+        class="section section-light"
+        aria-labelledby="con-titulo"
+      >
+        <div class="container">
+          <h2 id="con-titulo" class="display-title text-center reveal">
+            Habla con nosotros
+          </h2>
+          <div class="row g-4 mt-1">
+            <div class="col-lg-5 reveal">
+              <div class="card-rp h-100">
+                <h3>Contáctanos</h3>
+                <p class="sample">Estamos para escucharte y atenderte</p>
+                <!-- REEMPLAZAR: teléfonos, WhatsApp y correo -->
+                <ul class="list-unstyled contact-list">
+                  <li>
+                    <i class="bi bi-telephone-fill"></i
+                    ><a href="tel:+50324151436">+503 2415-1436</a>
+                    <small>Cabina</small>
+                  </li>
+                  <li>
+                    <i class="bi bi-whatsapp"></i
+                    ><a
+                      href="https://wa.me/50376576093"
+                      target="_blank"
+                      rel="noopener"
+                      >+503 7657-6093</a
+                    >
+                    <small>WhatsApp</small>
+                  </li>
+                  <li>
+                    <i class="bi bi-envelope-fill"></i
+                    ><a href="mailto:radiopastorelsalvador@gmail.com"
+                      >radiopastorelsalvador@gmail.com</a
+                    >
+                    <small>Correo</small>
+                  </li>
+                  <li>
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <a
+                      href="https://maps.app.goo.gl/SJVmz28Tn9Vk7SnW7"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Santa Ana, El Salvador
+                    </a>
+                    <small>Google Maps</small>
+                  </li>
+                </ul>
+                <!-- REEMPLAZAR: enlaces de redes sociales -->
+                <div class="social" aria-label="Redes sociales">
+                  <a
+                    href="https://www.facebook.com/radiopastorelsalvador1069fm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook de Radio Pastor"
+                    ><i class="bi bi-facebook"></i
+                  ></a>
+                  <a
+                    href="https://www.instagram.com/radiopastorsonsonate/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram de Radio Pastor"
+                    ><i class="bi bi-instagram"></i
+                  ></a>
+                  <a
+                    href="https://www.youtube.com/@Radiopastorfm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube de Radio Pastor"
+                    ><i class="bi bi-youtube"></i
+                  ></a>
+                  <a
+                    href="https://www.tiktok.com/@radiopastor102.1santaana"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="TikTok de Radio Pastor"
+                    ><i class="bi bi-tiktok"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 reveal">
+              <div class="card-rp h-100">
+                <h3>Apoya la misión</h3>
+                <p class="sample">
+                  Tu aporte nos ayuda a seguir llevando el mensaje de Dios
+                </p>
+                <!-- REEMPLAZAR: banco, tipo, número y titular de cada cuenta -->
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="bank">
+                      <h4><i class="bi bi-bank2"></i> Banco Promerica</h4>
+                      <dl>
+                        <dt>Tipo</dt>
+                        <dd>Cuenta de ahorros</dd>
+                        <dt>Número</dt>
+                        <dd class="num">000-000000-0</dd>
+                        <dt>Titular</dt>
+                        <dd>Asociación Radio Pastor</dd>
+                      </dl>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="bank">
+                      <h4><i class="bi bi-bank2"></i> Banco Agrícola</h4>
+                      <dl>
+                        <dt>Tipo</dt>
+                        <dd>Cuenta de ahorros</dd>
+                        <dt>Número</dt>
+                        <dd class="num">0000-000000-0</dd>
+                        <dt>Titular</dt>
+                        <dd>Asociación Radio Pastor</dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== PIE DE PÁGINA ===== -->
+    <footer class="rp-footer">
+      <div
+        class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
+      >
+        <img
+          class="rp-logo"
+          src="img/logo.png"
+          width="760"
+          height="420"
+          loading="lazy"
+          alt="Logo de Radio Pastor"
+        />
+        <p class="mb-0"><strong>Radio Pastor 102.1 FM</strong> · LVA</p>
+        <p class="mb-0 small">
+          &copy; <span id="anio">2026</span> Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Aviso discreto: solo aparece si el navegador exige un primer toque para activar el sonido -->
+    <div class="sound-hint" id="hintSonido" role="status" hidden>
+      <i class="bi bi-volume-up-fill" aria-hidden="true"></i> Toca la pantalla
+      para activar el sonido
+    </div>
+
+    <!-- Lightbox (modal de Bootstrap) -->
+    <div
+      class="modal fade"
+      id="lightbox"
+      tabindex="-1"
+      aria-label="Imagen ampliada"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-transparent border-0">
+          <button
+            type="button"
+            class="btn-close btn-close-white ms-auto mb-2"
+            data-bs-dismiss="modal"
+            aria-label="Cerrar imagen"
+          ></button>
+          <img id="lbImg" class="img-fluid rounded-3" src="" alt="" />
+          <p id="lbCap" class="text-white text-center mt-2 mb-0"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
